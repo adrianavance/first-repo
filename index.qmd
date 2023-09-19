@@ -1,0 +1,22 @@
+---
+title: "Class Exercise"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+storms %>%
+  filter(category > 0) %>%
+  distinct(name, year) %>%
+  count(year) %>%
+  ggplot() + 
+  geom_line(mapping = aes(x = year, y = n)) + 
+  geom_point(mapping = aes(x = year, y = n))
+```
